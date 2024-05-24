@@ -10,12 +10,16 @@ import { Observer } from 'rxjs';
 })
 export class ListUsersComponent implements OnInit {
 
-  users: User[] = [];
+  users?: User[];
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    const userObserver: Observer<User[]> = {
+    this.fetchUsers();
+  }
+
+  private fetchUsers() {
+    this.userService.getUsers().subscribe({
       next: (data: User[]) => {
         this.users = data;
       },
@@ -25,8 +29,6 @@ export class ListUsersComponent implements OnInit {
       complete: () => {
         console.log('User fetching completed');
       }
-    };
-
-    this.userService.getUsers().subscribe(userObserver);
+    });
   }
 }

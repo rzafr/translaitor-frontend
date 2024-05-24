@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mb-5">
+        <div class="card-header text-center">
+          <h4 class="mb-0">Crea una cuenta</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
+            </div>
+            <div class="row justify-content-center align-items-center">
+              <div class="col-md-6 text-center">
+                <input type="submit" value="Registrar" class="btn btn-primary">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

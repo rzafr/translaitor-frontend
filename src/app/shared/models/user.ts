@@ -1,15 +1,32 @@
 export class User {
-  constructor(
-    public id: number,
-    public username: string,
-    public password: string,
-    public firstName: string,
-    public lastName: string,
-    public dateOfBirth: Date,
-    public email: string,
-    public phoneNumber: string,
-    public roles: Set<string>,
-    public createdAt: Date,
-    public lastPasswordChangeAt: Date
-  ) {}
+
+  id?: number;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: Date;
+  email: string;
+  phoneNumber: string;
+  roles: Set<string>;
+  createdAt?: Date;
+  lastPasswordChangeAt?: Date;
+
+  constructor(id: number, username: string, password: string, firstName: string, lastName: string,
+    dateOfBirth: Date, email: string, phoneNumber: string, roles: Set<string>, createdAt: Date, lastPasswordChangeAt: Date) {
+
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dateOfBirth = dateOfBirth;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.roles = roles;
+    this.createdAt = createdAt;
+    this.lastPasswordChangeAt = lastPasswordChangeAt;
+
+  }
+
 }

@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mb-5">
+        <div class="card-header text-center">
+          <h4 class="mb-0">Crea una cuenta</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Nombre de usuario</label>
+              <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
+            </div>
+            <div class="mb-3">
+              <label for="verifyPassword" class="form-label">Repite la contraseña</label>
+              <input type="password" class="form-control" id="verifyPassword" [(ngModel)]="user.verifyPassword" name="verifyPassword" required>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="user.name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName" required>
+            </div>
+            <div class="mb-3">
+              <label for="dateOfBirth" class="form-label">Fecha de nacimiento</label>
+              <input type="date" class="form-control" id="dateOfBirth" [(ngModel)]="user.dateOfBirth" name="dateOfBirth" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phoneNumber" class="form-label">Número de teléfono</label>
+              <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" required>
+            </div>
+            <div class="row justify-content-center align-items-center">
+              <div class="col-md-6 text-center">
+                <input type="submit" value="Registrar" class="btn btn-primary">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
