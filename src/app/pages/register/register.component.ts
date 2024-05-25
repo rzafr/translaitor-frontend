@@ -13,7 +13,7 @@ export class RegisterComponent {
     username: null,
     password: null,
     verifyPassword: null,
-    name: null,
+    firstName: null,
     lastName: null,
     dateOfBirth: null,
     email: null,
