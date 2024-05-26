@@ -15,6 +15,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { TranslationComponent } from './pages/translation/translation.component';
 
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,9 @@ import { TranslationComponent } from './pages/translation/translation.component'
     LoginComponent,
     NotFoundComponent,
     RegisterComponent,
-    TranslationComponent
+    TranslationComponent,
+    DashboardComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,7 @@ import { TranslationComponent } from './pages/translation/translation.component'
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/shared/services/user.service';
+import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +10,30 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class LoginComponent {
 
   public user = {
-    email: null,
+    username: null,
     password: null
   }
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   onSubmit() {
-    this.userService.login(this.user).subscribe({
+    this.loginService.login(this.user).subscribe({
       next: (data: any) => {
         console.log(data);
         alert('Usuario logueado correctamente');
-        this.router.navigate(['/translation']);
+        if (data.token) {
+          this.loginService.loginUser(data.token);
+          this.loginService.getCurrentUser().subscribe((user: any) => {
+            this.loginService.setUser(user)
+            console.log(user);
+
+            if (this.loginService.getUserRole() == "ADMIN")
+              this.router.navigate(['/admin']);
+            else
+              this.router.navigate(['/translation']);
+          })
+        }
+
       },
       error: (error: any) => {
         console.error('Error login', error);

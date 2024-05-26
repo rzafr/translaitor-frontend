@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, firstValueFrom } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -12,14 +12,12 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // Create a new user
   register(formValue: any): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/auth/register`, formValue);
   }
 
-  login(formValue: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/auth/login`, formValue);
-  }
-
+  // Returns all users
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.baseUrl}/users`);
   }
