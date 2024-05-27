@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -23,7 +23,7 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
   declarations: [
     AppComponent,
     ListUsersComponent,
-    NavbarComponent,
+    HeaderComponent,
     FooterComponent,
     HomeComponent,
     LoginComponent,

@@ -12,11 +12,6 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // Create a new user
-  register(formValue: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/auth/register`, formValue);
-  }
-
   // Returns all users
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.baseUrl}/users`);

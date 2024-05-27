@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from "../../shared/services/user.service";
+import { AuthService } from "../../shared/services/auth.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,17 +20,33 @@ export class RegisterComponent {
     phoneNumber: null
   }
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
-    this.userService.register(this.user).subscribe({
+    this.authService.register(this.user).subscribe({
       next: (data: any) => {
-        console.log(data);
-        alert('Usuario registrado correctamente');
-        this.router.navigate(['/translation']);
+        if (data.token) {
+          this.authService.loginUser(data.token);
+          this.authService.getCurrentUser().subscribe({
+            next: (data: any) => {
+              this.authService.setUser(data)
+              this.authService.isLoggedIn = true;
+              if (this.authService.getUserRole() == "ADMIN")
+                this.router.navigate(['/admin']);
+              else
+                this.router.navigate(['/translation']);
+            },
+            error: (error: any) => {
+              console.error('Login error', error);
+            },
+            complete: () => {
+              console.log('Login completed');
+            }
+          });
+        }
       },
       error: (error: any) => {
-        console.error('Error register user', error);
+        console.error('User register error', error);
       },
       complete: () => {
         console.log('User register completed');
