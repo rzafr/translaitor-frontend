@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/models/user';
 import { UserService } from '../../shared/services/user.service';
-import { Observer } from 'rxjs';
 
 @Component({
   selector: 'app-list-users',
@@ -18,7 +17,7 @@ export class ListUsersComponent implements OnInit {
     this.fetchUsers();
   }
 
-  private fetchUsers() {
+  fetchUsers() {
     this.userService.getUsers().subscribe({
       next: (data: User[]) => {
         this.users = data;

@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private baseUrl: string = 'http://localhost:8080/api';
+  private apiUrl = environment.apiUrl;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   // Returns all users
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${this.baseUrl}/users`);
+  getUsers(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/users`);// No pide autorización
   }
 
 }

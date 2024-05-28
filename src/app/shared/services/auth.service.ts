@@ -1,26 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseUrl: string = 'http://localhost:8080/api';
+  private authUrl = environment.authUrl;
 
   isLoggedIn = false;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   // Create a new user
   register(formValue: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/auth/register`, formValue);
+    return this.http.post(`${this.authUrl}/register`, formValue);
   }
 
   // Get user and token from backend
   login(formValue: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/auth/login`, formValue);
+    return this.http.post(`${this.authUrl}/login`, formValue);
   }
 
   // Save the token coming from the backend in localstorage
@@ -58,8 +59,8 @@ export class AuthService {
   }
 
   // Returns the session user
-  getCurrentUser() {
-    return this.httpClient.get(`${this.baseUrl}/user/me`);
+  getCurrentUser(): Observable<any> {
+    return this.http.get(`${this.authUrl}/user/me`);
   }
 
 }
