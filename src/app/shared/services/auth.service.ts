@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   // Save the token coming from the backend in localstorage
-  public loginUser(token: any) {
+  loginUser(token: any) {
     localStorage.setItem('accessToken', token);
   }
 

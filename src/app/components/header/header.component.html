@@ -39,7 +39,7 @@
 
           <li *ngIf="authService.isLoggedIn" class="nav-item">
             <a class="nav-link" routerLink="/home">
-              {{ authService.getUser().username }}
+              {{ authService.getUser().username | uppercase }}
             </a>
           </li>
           <li *ngIf="authService.isLoggedIn" class="nav-item">

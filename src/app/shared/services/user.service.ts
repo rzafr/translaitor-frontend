@@ -14,7 +14,7 @@ export class UserService {
 
   // Returns all users
   getUsers(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/users`);// No pide autorización
+    return this.http.get(`${this.apiUrl}/users`);
   }
 
 }

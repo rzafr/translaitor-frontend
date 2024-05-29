@@ -6,7 +6,7 @@ export class User {
   lastName: string;
   dateOfBirth: Date;
   email: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   roles: Set<string>;
   createdAt?: Date;
   lastPasswordChangeAt?: Date;

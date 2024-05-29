@@ -1,6 +1,7 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -14,9 +15,13 @@ export class AuthInterceptor implements HttpInterceptor {
    * @returns
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     const token = localStorage.getItem('accessToken');
-    if (token) {
-      // If token exists, the original request is cloned and an Authorization HTTP header is added with the value Bearer ${token}
+    const openAiUrl = environment.openAiUrl;
+
+    if (!req.url.startsWith(openAiUrl) && token) {
+      // If the request is not made to openAI and accessToken exists, the original request is cloned
+      // and an Authorization HTTP header is added with the value Bearer ${token}
       const cloned = req.clone({
         headers: req.headers.set('Authorization', `Bearer ${token}`)
       });
