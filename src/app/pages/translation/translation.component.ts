@@ -8,16 +8,22 @@ import { OpenaiService } from 'src/app/shared/services/openai.service';
 })
 export class TranslationComponent {
 
+  messages: any[] = [];
   originalText: string = '';
   prompt: string = `Translate the following text into English, respond only with the translated text: ${this.originalText}`;
-  translatedText: string = '';
+  gptAnswer: string = '';
 
   constructor(private openaiService: OpenaiService) {}
 
   onSubmit() {
-    this.openaiService.sendTranslation(this.prompt).subscribe(response => {
-      this.translatedText = response.choices[0].text;
+    const userMessage = { role: 'user', content: this.prompt };
+    this.messages.push(userMessage);
+    this.openaiService.sendTranslation(this.messages).subscribe(response => {
+      const gptMessage = response.choices[0].message.content;
+      this.messages.push(gptMessage);
+      this.gptAnswer = gptMessage.content;
     });
+    this.prompt = '';
   }
 
 }
