@@ -1,0 +1,8 @@
+.textarea-large {
+  font-size: 2em;
+  line-height: 1.5;
+}
+
+.invalid-form {
+  color: red;
+}

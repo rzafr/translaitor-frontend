@@ -6,3 +6,12 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.flex-fill {
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}

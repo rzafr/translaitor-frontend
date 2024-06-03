@@ -1,13 +1,48 @@
 <div class='row'>
-  <div class='col-6 mt-5 mx-auto'>
-      <h2>Realiza tu traducción</h2>
-      <p class='text-danger'></p>
-      <form (ngSubmit)="onSubmit()">
+  <div class='col-5 mt-5 mx-auto'>
+    <h2>Realiza tu traducción</h2>
+    <form #formSourcetLanguage="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-          <label for="originalText">Texto a traducir:</label>
-          <textarea class="form-control" [(ngModel)]="originalText" name="originalText" rows="3"></textarea>
+        <select class="form-control" [(ngModel)]="translation.sourceLanguage" name="sourceLanguage">
+          <option value="" disabled selected>Selecciona un idioma</option>
+          <option value="spanish">Español</option>
+          <option value="english">Inglés</option>
+          <option value="french">Francés</option>
+          <option value="german">Alemán</option>
+          <option value="chinese">Chino</option>
+        </select>
+      </div>
+      <div *ngIf="formSourcetLanguage.submitted && !translation.sourceLanguage" class="invalid-form">
+        <p>Por favor, selecciona un idioma.</p>
+      </div>
+      <div class="form-group mt-4">
+          <textarea class="form-control textarea-large" [(ngModel)]="translation.originalText" name="originalText" rows="3" placeholder="Texto a traducir"></textarea>
+      </div>
+      <div *ngIf="formSourcetLanguage.submitted && !translation.originalText" class="invalid-form">
+        <p>Por favor, introduce un texto.</p>
       </div>
       <input type="submit" value="Traducir" class="btn btn-primary">
-      </form>
+    </form>
+  </div>
+  <div class='col-5 mt-5 mx-auto'>
+    <h2>Tu traducción</h2>
+    <form #formTargetLanguage="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="translation.targetLanguage" name="targetLanguage">
+          <option value="" disabled selected>Selecciona un idioma</option>
+          <option value="spanish">Español</option>
+          <option value="english">Inglés</option>
+          <option value="french">Francés</option>
+          <option value="german">Alemán</option>
+          <option value="chinese">Chino</option>
+        </select>
+      </div>
+      <div *ngIf="formSourcetLanguage.submitted && !translation.targetLanguage" class="invalid-form">
+        <p>Por favor, selecciona un idioma.</p>
+      </div>
+      <div class="form-group mt-4">
+          <textarea class="form-control textarea-large" [(ngModel)]="translation.translatedText" name="translatedText" rows="3" placeholder="Texto traducido">{{ translation.translatedText }}</textarea>
+      </div>
+    </form>
   </div>
 </div>

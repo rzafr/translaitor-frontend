@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  // Create a new user
+  // Persist a new user
   register(formValue: any): Observable<any> {
     return this.http.post(`${this.authUrl}/register`, formValue);
   }

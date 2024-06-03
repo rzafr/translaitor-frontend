@@ -13,7 +13,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: DashboardComponent },
+  { path: 'admin', component: DashboardComponent, children: [
+    // subcomponentes del admin-dashboard
+    // { path: 'profile', component: ProfileComponent },
+  ]},
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'users', component: ListUsersComponent },
   { path: 'translation', component: TranslationComponent },
