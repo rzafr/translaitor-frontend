@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
@@ -18,6 +19,7 @@ import { TranslationComponent } from './pages/translation/translation.component'
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+import { UserUpdateModalComponent } from './components/user-update-modal/user-update-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,15 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
     RegisterComponent,
     TranslationComponent,
     DashboardComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    UserUpdateModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

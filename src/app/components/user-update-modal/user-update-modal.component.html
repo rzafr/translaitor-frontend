@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h4 class="modal-title">Actualizar usuario</h4>
+  <button type="button" class="close close-button" aria-label="Cerrar" (click)="onCancel()">
+    <span aria-hidden="true" class="close-icon">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="username">Nombre de usuario</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" readonly>
+    </div>
+    <div class="form-group">
+      <label for="firstName">Nombre</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Apellidos</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+    </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Fecha de nacimiento</label>
+      <input type="date" class="form-control" id="dateOfBirth" [(ngModel)]="user.dateOfBirth" name="dateOfBirth">
+    </div>
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Número de teléfono</label>
+      <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber">
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+  <button type="button" class="btn btn-primary" (click)="onSubmit()">Actualizar</button>
+</div>
+

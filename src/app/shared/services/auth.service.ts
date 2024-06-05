@@ -15,13 +15,13 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   // Persist a new user
-  register(formValue: any): Observable<any> {
-    return this.http.post(`${this.authUrl}/register`, formValue);
+  register(user: any): Observable<any> {
+    return this.http.post(`${this.authUrl}/register`, user);
   }
 
   // Get user and token from backend
-  login(formValue: any): Observable<any> {
-    return this.http.post(`${this.authUrl}/login`, formValue);
+  login(user: any): Observable<any> {
+    return this.http.post(`${this.authUrl}/login`, user);
   }
 
   // Save the token coming from the backend in localstorage
