@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { User } from 'src/app/shared/models/user';
+import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class UserUpdateModalComponent {
 
-  @Input() user: User = {
+  @Input() user = {
     id: 0,
     username: '',
     firstName: '',
@@ -18,7 +18,7 @@ export class UserUpdateModalComponent {
     dateOfBirth: new Date(),
     email: '',
     phoneNumber: '',
-    roles: new Set<string>()
+    roles: []
   };
 
   constructor(public activeModal: NgbActiveModal, private userService: UserService) {}

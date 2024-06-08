@@ -1,8 +1,31 @@
-<div class="container mt-4 flex-grow-1">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <h1>Página de bienvenida</h1>
+<section class="welcome py-5">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 text-center">
+            <h1>Bienvenido a Translaitor</h1>
+            <p>Tu solución en línea para todas tus necesidades de traducción.</p>
+            <button class="btn btn-lg py-3 px-5" [routerLink]="'/login'">Comienza ahora</button>
+        </div>
     </div>
   </div>
-</div>
+</section>
+
+<section class="features mt-4 py-5 px-2 w-100 text-center">
+  <h2>Descubre todo lo que te ofrece Translaitor</h2>
+  <div class="card-container d-flex justify-content-around flex-wrap gap-3 mt-5">
+    <div class="card p-4">
+        <h3>Traducción instantánea</h3>
+        <p>Obtén traducciones en tiempo real para más de 50 idiomas.</p>
+    </div>
+    <div class="card p-4">
+        <h3>Mejora tus resultados</h3>
+        <p>Asegura tus mejores resultados de traducción online.</p>
+    </div>
+    <div class="card p-4">
+        <h3>Máxima garantía</h3>
+        <p>Todas nuestras traducciones están garantizadas por los modelos de OpenAI.</p>
+    </div>
+  </div>
+</section>
+
 

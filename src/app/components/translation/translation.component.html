@@ -1,0 +1,152 @@
+<div class='row'>
+  <div class='col-5 mt-5 mx-auto'>
+    <h2>Realiza tu traducción</h2>
+    <form #formSourcetLanguage="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="translation.sourceLanguage" name="sourceLanguage">
+          <option value="" disabled selected>Selecciona un idioma</option>
+          <option value="spanish">Español</option>
+          <option value="german">Alemán</option>
+          <option value="arabic">Árabe</option>
+          <option value="azerbaijani">Azerbaiyano</option>
+          <option value="bengali">Bengalí</option>
+          <option value="burmese">Birmano</option>
+          <option value="bulgarian">Búlgaro</option>
+          <option value="cantonese">Cantonés</option>
+          <option value="czech">Checo</option>
+          <option value="korean">Coreano</option>
+          <option value="croatian">Croata</option>
+          <option value="danish">Danés</option>
+          <option value="slovak">Eslovaco</option>
+          <option value="slovenian">Esloveno</option>
+          <option value="estonian">Estonio</option>
+          <option value="persian">Farsi (Persa)</option>
+          <option value="filipino">Filipino (Tagalo)</option>
+          <option value="finnish">Finés</option>
+          <option value="french">Francés</option>
+          <option value="irish">Gaélico irlandés</option>
+          <option value="greek">Griego</option>
+          <option value="hindi">Hindi</option>
+          <option value="hungarian">Húngaro</option>
+          <option value="indonesian">Indonesio</option>
+          <option value="english">Inglés</option>
+          <option value="italian">Italiano</option>
+          <option value="japanese">Japonés</option>
+          <option value="javanese">Javanés</option>
+          <option value="latvian">Letón</option>
+          <option value="lithuanian">Lituano</option>
+          <option value="malay">Malayo</option>
+          <option value="maltese">Maltés</option>
+          <option value="mandarin">Mandarín (Chino)</option>
+          <option value="dutch">Neerlandés</option>
+          <option value="polish">Polaco</option>
+          <option value="portuguese">Portugués</option>
+          <option value="romanian">Rumano</option>
+          <option value="russian">Ruso</option>
+          <option value="serbian">Serbio</option>
+          <option value="sindhi">Sindhi</option>
+          <option value="swedish">Sueco</option>
+          <option value="swahili">Swahili</option>
+          <option value="sundanese">Sunda</option>
+          <option value="thai">Tailandés</option>
+          <option value="tamil">Tamil</option>
+          <option value="telugu">Telugu</option>
+          <option value="turkish">Turco</option>
+          <option value="turkmen">Turcomano</option>
+          <option value="ukrainian">Ucraniano</option>
+          <option value="uyghur">Uigur</option>
+          <option value="urdu">Urdu</option>
+          <option value="vietnamese">Vietnamita</option>
+          <option value="wu">Wu (Shanghainés)</option>
+        </select>
+      </div>
+      <div *ngIf="formSourcetLanguage.submitted && !translation.sourceLanguage" class="invalid-form">
+        <p>Por favor, selecciona un idioma.</p>
+      </div>
+      <div class="form-group mt-4">
+          <textarea class="form-control textarea-large" [(ngModel)]="translation.originalText" name="originalText" rows="3" placeholder="Texto a traducir"></textarea>
+      </div>
+      <div *ngIf="formSourcetLanguage.submitted && !translation.originalText" class="invalid-form">
+        <p>Por favor, introduce un texto.</p>
+      </div>
+      <div class="form-group my-4">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" [(ngModel)]="translation.favorite" name="favorite" [value]="true" id="favorite">
+          <label class="form-check-label" for="favorite">
+            Agregar a mis traducciones favoritas
+          </label>
+        </div>
+      </div>
+      <input type="submit" value="Traducir" class="btn btn-primary">
+    </form>
+  </div>
+  <div class='col-5 mt-5 mx-auto'>
+    <h2>Tu traducción</h2>
+    <form #formTargetLanguage="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="translation.targetLanguage" name="targetLanguage">
+          <option value="" disabled selected>Selecciona un idioma</option>
+          <option value="spanish">Español</option>
+          <option value="german">Alemán</option>
+          <option value="arabic">Árabe</option>
+          <option value="azerbaijani">Azerbaiyano</option>
+          <option value="bengali">Bengalí</option>
+          <option value="burmese">Birmano</option>
+          <option value="bulgarian">Búlgaro</option>
+          <option value="cantonese">Cantonés</option>
+          <option value="czech">Checo</option>
+          <option value="korean">Coreano</option>
+          <option value="croatian">Croata</option>
+          <option value="danish">Danés</option>
+          <option value="slovak">Eslovaco</option>
+          <option value="slovenian">Esloveno</option>
+          <option value="estonian">Estonio</option>
+          <option value="persian">Farsi (Persa)</option>
+          <option value="filipino">Filipino (Tagalo)</option>
+          <option value="finnish">Finés</option>
+          <option value="french">Francés</option>
+          <option value="irish">Gaélico irlandés</option>
+          <option value="greek">Griego</option>
+          <option value="hindi">Hindi</option>
+          <option value="hungarian">Húngaro</option>
+          <option value="indonesian">Indonesio</option>
+          <option value="english">Inglés</option>
+          <option value="italian">Italiano</option>
+          <option value="japanese">Japonés</option>
+          <option value="javanese">Javanés</option>
+          <option value="latvian">Letón</option>
+          <option value="lithuanian">Lituano</option>
+          <option value="malay">Malayo</option>
+          <option value="maltese">Maltés</option>
+          <option value="mandarin">Mandarín (Chino)</option>
+          <option value="dutch">Neerlandés</option>
+          <option value="polish">Polaco</option>
+          <option value="portuguese">Portugués</option>
+          <option value="romanian">Rumano</option>
+          <option value="russian">Ruso</option>
+          <option value="serbian">Serbio</option>
+          <option value="sindhi">Sindhi</option>
+          <option value="swedish">Sueco</option>
+          <option value="swahili">Swahili</option>
+          <option value="sundanese">Sunda</option>
+          <option value="thai">Tailandés</option>
+          <option value="tamil">Tamil</option>
+          <option value="telugu">Telugu</option>
+          <option value="turkish">Turco</option>
+          <option value="turkmen">Turcomano</option>
+          <option value="ukrainian">Ucraniano</option>
+          <option value="uyghur">Uigur</option>
+          <option value="urdu">Urdu</option>
+          <option value="vietnamese">Vietnamita</option>
+          <option value="wu">Wu (Shanghainés)</option>
+        </select>
+      </div>
+      <div *ngIf="formSourcetLanguage.submitted && !translation.targetLanguage" class="invalid-form">
+        <p>Por favor, selecciona un idioma.</p>
+      </div>
+      <div class="form-group mt-4">
+          <textarea class="form-control textarea-large" [(ngModel)]="translation.translatedText" name="translatedText" rows="3" placeholder="Texto traducido">{{ translation.translatedText }}</textarea>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+.welcome {
+  border-radius: 10px;
+  border: 1px solid #e9e4e4;
+  box-shadow: 0 4px 8px rgba(82, 80, 80, 0.3);
+}
+
+.welcome h1 {
+  font-size: 48px;
+}
+
+.welcome p {
+  font-size: 24px;
+}
+
+.welcome .btn {
+  background-color: #1E90FF;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.welcome .btn:hover {
+  background-color: #0056b3;
+}
+
+.welcome .btn:visited {
+  background-color: #004085;
+}
+
+.features h2 {
+  font-size: 36px;
+}
+
+.card {
+  background-color: #e6f2ff;
+  border: 1px solid #1E90FF;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  width: 300px;
+  text-align: left;
+}
+
+.card h3 {
+  font-size: 24px;
+  color: #1E90FF;
+}
+
+.card p {
+  font-size: 16px;
+}

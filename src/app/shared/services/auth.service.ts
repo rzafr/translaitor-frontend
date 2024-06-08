@@ -10,7 +10,7 @@ export class AuthService {
 
   private authUrl = environment.authUrl;
 
-  isLoggedIn = false;
+  public isLoggedIn = false;
 
   constructor(private http: HttpClient) { }
 
@@ -55,12 +55,20 @@ export class AuthService {
 
   // Returns the user's role
   getUserRole() {
-    return this.getUser().roles[0];
+    return this.getUser().roles[0].toLowerCase();
   }
 
   // Returns the session user
   getCurrentUser(): Observable<any> {
     return this.http.get(`${this.authUrl}/user/me`);
+  }
+
+  isAdmin() {
+    return this.getUserRole() == 'admin';
+  }
+
+  isUser() {
+    return this.getUserRole() == 'user';
   }
 
 }

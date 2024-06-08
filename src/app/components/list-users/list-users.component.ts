@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/models/user';
+import { User } from '../../shared/models/user.model';
 import { UserService } from '../../shared/services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserUpdateModalComponent } from '../user-update-modal/user-update-modal.component';
@@ -50,7 +50,7 @@ export class ListUsersComponent implements OnInit {
     });
   }
 
-  deleteUserById(id: number): void {
+  deleteUserById(id: any): void {
     if (confirm('Confirme la eliminación del usuario')) {
       this.userService.deleteUserById(id).subscribe({
         next: () => {

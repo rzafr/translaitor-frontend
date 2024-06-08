@@ -10,14 +10,24 @@ import { TranslationService } from 'src/app/shared/services/translation.service'
 })
 export class TranslationComponent implements OnInit {
 
-  messages: any[] = [];
+  public messages: any[] = [];
 
   public translation = {
-    sourceLanguage: null,
-    targetLanguage: null,
-    originalText: null,
-    translatedText: null,
-    user: null
+    sourceLanguage: '',
+    targetLanguage: '',
+    originalText: '',
+    translatedText: '',
+    favorite: false,
+    user: {
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      dateOfBirth: new Date(),
+      email: '',
+      phoneNumber: '',
+      roles: []
+    }
   }
 
   constructor(private openaiService: OpenaiService, private translationService: TranslationService, private authService: AuthService) { }
@@ -60,8 +70,6 @@ export class TranslationComponent implements OnInit {
               console.log('Translation persistence completed');
             }
           });
-
-
         },
         error: (error: any) => {
           console.error('Translation persistence error', error);

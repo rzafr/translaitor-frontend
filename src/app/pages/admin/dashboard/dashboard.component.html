@@ -1,22 +1,6 @@
-<div class="row">
-  <nav class="col-md-2 sidebar">
-    <div class="sidebar-sticky">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
-            Usuarios
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Traducciones
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="col-md-9 align-items-center">
-    <h2>Dashboard Admin</h2>
+<div class="row justify-content-center">
+  <div class="col-md-9">
+    <h2>Bienvenido, {{ authService.getUser().username }}</h2>
     <app-list-users></app-list-users>
   </div>
 </div>

@@ -1,56 +1,49 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a class="navbar-brand" routerLink="/home">
         <img src="../../../assets/logos/prueba_logo.png" alt="Logo de la Web">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/home">Inicio</a>
+          <li *ngIf="authService.isLoggedIn && authService.isAdmin()" class="nav-item">
+            <a class="nav-link" routerLink="/users">Usuarios</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/translation">Traducciones</a>
+          <li *ngIf="authService.isLoggedIn && authService.isAdmin()" class="nav-item">
+            <a class="nav-link" routerLink="/translations">Traducciones</a>
+          </li>
+          <li *ngIf="authService.isLoggedIn && authService.isUser()" class="nav-item">
+            <a class="nav-link" routerLink="/translation">Traductor</a>
+          </li>
+          <li *ngIf="authService.isLoggedIn && authService.isUser()" class="nav-item">
+            <a class="nav-link" routerLink="/my-translations">Mis traducciones</a>
+          </li>
+          <li *ngIf="authService.isLoggedIn && authService.isUser()" class="nav-item">
+            <a class="nav-link" routerLink="/my-favorites">Mis favoritas</a>
           </li>
         </ul>
       </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
           <li *ngIf="!authService.isLoggedIn" class="nav-item">
-            <a class="nav-link" routerLink="/login">Iniciar sesión</a>
+            <button class="btn btn-outline-primary me-3" routerLink="/login">Iniciar sesión</button>
           </li>
           <li *ngIf="!authService.isLoggedIn" class="nav-item">
-            <a class="nav-link" routerLink="/register">Registrar</a>
+            <button class="btn btn-primary" routerLink="/register">Registrar</button>
           </li>
-            <!--
-            <li *ngIf="authService.isLoggedIn" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ authService.getUser().username }}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" (click)="logout()" routerLink="/home">Cerrar sesión</a>
-            </div>
-            </li>
-            -->
-
-          <li *ngIf="authService.isLoggedIn" class="nav-item">
-            <a class="nav-link" routerLink="/home">
+          <li *ngIf="authService.isLoggedIn" class="nav-item me-5">
+            <p class="mt-2">
               {{ authService.getUser().username | uppercase }}
-            </a>
+            </p>
           </li>
           <li *ngIf="authService.isLoggedIn" class="nav-item">
-            <a class="nav-link" (click)="logout()" routerLink="/home">Cerrar sesión</a>
+            <button class="btn btn-primary" (click)="logout()" routerLink="/home">Cerrar sesión</button>
           </li>
-
         </ul>
-
-
-
+      </div>
     </div>
-  </div>
   </nav>
 </header>

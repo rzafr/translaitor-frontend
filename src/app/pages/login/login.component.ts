@@ -23,12 +23,12 @@ export class LoginComponent {
           this.authService.loginUser(data.token);
           this.authService.getCurrentUser().subscribe({
             next: (data: any) => {
-              this.authService.setUser(data)
+              this.authService.setUser(data);
               this.authService.isLoggedIn = true;
-              if (this.authService.getUserRole() == "ADMIN")
+              if (this.authService.getUserRole() == "admin")
                 this.router.navigate(['/admin']);
               else
-                this.router.navigate(['/translation']);
+                this.router.navigate(['/user-dashboard']);
             },
             error: (error: any) => {
               console.error('Login error', error);

@@ -1,1 +1,6 @@
-<p>user-dashboard works!</p>
+<div class="row justify-content-center">
+  <div class="col-md-9">
+    <h2>Bienvenido, {{ authService.getUser().username }}</h2>
+    <app-translation></app-translation>
+  </div>
+</div>

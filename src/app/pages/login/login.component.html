@@ -1,13 +1,15 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card mb-5">
-        <div class="card-header text-center">
-          <h4 class="mb-0">Bienvenido de nuevo</h4>
+      <div class="row mb-3">
+        <div class="col-12 text-center">
+          <h3>Bienvenido de nuevo</h3>
         </div>
+      </div>
+      <div class="card mb-5">
         <div class="card-body">
           <form (ngSubmit)="onSubmit()">
-            <div class="mb-3">
+            <div class="mb-3 mt-4">
               <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" placeholder="Nombre de usuario" required>
             </div>
             <div class="mb-3">
