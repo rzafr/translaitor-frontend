@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -23,9 +23,28 @@ export class TranslationService {
     return this.http.get(`${this.apiUrl}/translations/user`);
   }
 
+  // Returns all translations by user, paged and sorted
+  getTranslationsByUserPagedAndSorted(page: number, size: number, sortBy: string = 'createdAt,desc'): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      .set('sort', sortBy);
+    return this.http.get(`${this.apiUrl}/translations/user/paged-sorted`, { params });
+  }
+
+  // Returns all favorite translations by user
+  getFavoriteTranslationsByUser(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/translations/user/favorite`);
+  }
+
   // Update translation
   updateTranslation(translation: Translation): Observable<any> {
     return this.http.put(`${this.apiUrl}/translations`, translation);
+  }
+
+  // Delete translation by ID
+  deleteTranslationById(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/translations/${id}`);
   }
 
 }

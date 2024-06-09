@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { OpenaiService } from 'src/app/shared/services/openai.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
@@ -30,7 +31,7 @@ export class TranslationComponent implements OnInit {
     }
   }
 
-  constructor(private openaiService: OpenaiService, private translationService: TranslationService, private authService: AuthService) { }
+  constructor(private openaiService: OpenaiService, private translationService: TranslationService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe({
@@ -41,6 +42,13 @@ export class TranslationComponent implements OnInit {
         console.error('Error fetching current user:', error);
       }
     });
+  }
+
+  toggleFavorite(event: any) {
+    if (event.target) {
+      const checked = (event.target as HTMLInputElement).checked;
+      this.translation.favorite = checked;
+    }
   }
 
   onSubmit() {
@@ -61,7 +69,7 @@ export class TranslationComponent implements OnInit {
 
           this.translationService.saveTranslation(this.translation).subscribe({
             next: (data: any) => {
-              // Navigate
+              this.router.navigate(['/my-translations']);
             },
             error: (error: any) => {
               console.error('Translation persistence error', error);

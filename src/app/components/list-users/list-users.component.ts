@@ -11,18 +11,25 @@ import { UserUpdateModalComponent } from '../user-update-modal/user-update-modal
 })
 export class ListUsersComponent implements OnInit {
 
-  users: User[] = [ ];
+  users: User[] = [];
+  currentPage: number = 0;
+  pageSize: number = 5;
+  totalPages: number = 0;
+  totalItems: number = 0;
 
   constructor(private userService: UserService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.fetchAllUsers();
+    this.getAllUsers();
   }
 
-  fetchAllUsers() {
-    this.userService.getUsers().subscribe({
-      next: (data: User[]) => {
-        this.users = data;
+  getAllUsers() {
+    this.userService.getUsersPaged(this.currentPage, this.pageSize).subscribe({
+      next: (data: any) => {
+        this.users = data.users;
+        this.currentPage = data.currentPage;
+        this.totalItems = data.totalItems;
+        this.totalPages = data.totalPages;
       },
       error: (error: any) => {
         console.error('Error fetching users', error);
@@ -31,6 +38,14 @@ export class ListUsersComponent implements OnInit {
         console.log('User fetching completed');
       }
     });
+  }
+
+  setPage(page: number, event: Event): void {
+    event.preventDefault();
+    if (page >= 0 && page < this.totalPages) {
+      this.currentPage = page;
+      this.getAllUsers();
+    }
   }
 
   openUpdateModal(user: User) {
@@ -54,7 +69,7 @@ export class ListUsersComponent implements OnInit {
     if (confirm('Confirme la eliminación del usuario')) {
       this.userService.deleteUserById(id).subscribe({
         next: () => {
-          this.fetchAllUsers();
+          this.getAllUsers();
         },
         error: (error: any) => {
           console.error('Error deleting user', error);

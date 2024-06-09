@@ -12,6 +12,7 @@ import { AdminGuard } from './_helpers/admin.guard';
 import { AuthGuard } from './_helpers/auth.guard';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ListTranslationsUserComponent } from './components/list-translations-user/list-translations-user.component';
+import { ListFavoriteTranslationUserComponent } from './components/list-favorite-translation-user/list-favorite-translation-user.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard] },
   { path: 'translation', component: TranslationComponent, canActivate: [AuthGuard] },
   { path: 'my-translations', component: ListTranslationsUserComponent, canActivate: [AuthGuard] },
+  { path: 'my-favorites', component: ListFavoriteTranslationUserComponent, canActivate: [AuthGuard] },
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }

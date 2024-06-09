@@ -11,26 +11,74 @@ import { TranslationUpdateModalComponent } from '../translation-update-modal/tra
 })
 export class ListTranslationsUserComponent implements OnInit {
 
-  translations: Translation[] = [ ];
+  translations: Translation[] = [];
+  currentPage: number = 0;
+  pageSize: number = 5;
+  totalPages: number = 0;
+  totalItems: number = 0;
 
   constructor(private translationService: TranslationService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.fetchAllTranslationsByUser();
+    this.getTranslationsPagedAndSorted();
   }
 
-  fetchAllTranslationsByUser() {
+  getAllTranslationsByUser() {
     this.translationService.getTranslationsByUser().subscribe({
       next: (data: Translation[]) => {
         this.translations = data;
       },
       error: (error: any) => {
-        console.error('Error fetching users', error);
+        console.error('Error fetching translations', error);
       },
       complete: () => {
-        console.log('User fetching completed');
+        console.log('Translation fetching completed');
       }
     });
+  }
+
+  getTranslationsPagedAndSorted(): void {
+    this.translationService.getTranslationsByUserPagedAndSorted(this.currentPage, this.pageSize)
+      .subscribe({
+        next: (data: any) => {
+          this.translations = data.translations;
+          this.currentPage = data.currentPage;
+          this.totalItems = data.totalItems;
+          this.totalPages = data.totalPages;
+        },
+        error: (error: any) => {
+          console.error('Error fetching translations', error);
+        },
+        complete: () => {
+          console.log('Translation fetching completed');
+        }
+      });
+  }
+
+  setPage(page: number, event: Event): void {
+    event.preventDefault();
+    if (page >= 0 && page < this.totalPages) {
+      this.currentPage = page;
+      this.getTranslationsPagedAndSorted();
+    }
+  }
+
+  sortData(sortBy: string): void {
+    this.translationService.getTranslationsByUserPagedAndSorted(this.currentPage, this.pageSize, sortBy)
+      .subscribe({
+        next: (data: any) => {
+          this.translations = data.translations;
+          this.currentPage = data.currentPage;
+          this.totalItems = data.totalItems;
+          this.totalPages = data.totalPages;
+        },
+        error: (error: any) => {
+          console.error('Error fetching translations', error);
+        },
+        complete: () => {
+          console.log('Translation fetching completed');
+        }
+      });
   }
 
   openUpdateModal(translation: Translation) {
@@ -40,7 +88,7 @@ export class ListTranslationsUserComponent implements OnInit {
     modalRef.result.then((result) => {
       if (result) {
         this.translationService.updateTranslation(result).subscribe(updatedTranslation => {
-          // Update the user list with the updated user
+          // Update the translations list with the updated translation
           const index = this.translations.findIndex(t => t.id === updatedTranslation.id);
           if (index !== -1) {
             this.translations[index] = updatedTranslation;
@@ -49,21 +97,21 @@ export class ListTranslationsUserComponent implements OnInit {
       }
     });
   }
-  /*
+
   deleteTranslationById(id: any): void {
-    if (confirm('Confirme la eliminación del usuario')) {
-      this.userService.deleteUserById(id).subscribe({
+    if (confirm('Confirme la eliminación de la traducción')) {
+      this.translationService.deleteTranslationById(id).subscribe({
         next: () => {
-          this.fetchAllUsers();
+          this.getTranslationsPagedAndSorted();
         },
         error: (error: any) => {
-          console.error('Error deleting user', error);
+          console.error('Error deleting translation', error);
         },
         complete: () => {
-          console.log('User deleting completed');
+          console.log('Translation deleting completed');
         }
       });
     }
   }
-  */
+
 }

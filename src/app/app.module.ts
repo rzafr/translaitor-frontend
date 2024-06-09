@@ -23,6 +23,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ListTranslationsUserComponent } from './components/list-translations-user/list-translations-user.component';
 import { TranslationUpdateModalComponent } from './components/translation-update-modal/translation-update-modal.component';
+import { ListFavoriteTranslationUserComponent } from './components/list-favorite-translation-user/list-favorite-translation-user.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TranslationUpdateModalComponent } from './components/translation-update
     NotFoundComponent,
     AccessDeniedComponent,
     ListTranslationsUserComponent,
-    TranslationUpdateModalComponent
+    TranslationUpdateModalComponent,
+    ListFavoriteTranslationUserComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
@@ -16,6 +16,14 @@ export class UserService {
   // Returns all users
   getUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}/users`);
+  }
+
+  // Returns all users paged
+  getUsersPaged(page: number, size: number): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+    return this.http.get(`${this.apiUrl}/users/paged`, { params });
   }
 
   // Update user

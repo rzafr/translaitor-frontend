@@ -1,0 +1,25 @@
+<div class="mt-5">
+  <h3>Mis traducciones favoritas</h3>
+  <div class="table-responsive mt-4">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Idioma de origen</th>
+          <th scope="col">Idioma objetivo</th>
+          <th scope="col">Texto original</th>
+          <th scope="col">Texto traducido</th>
+          <th scope="col">Favorita</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let translation of favoriteTranslations">
+          <td>{{ translation.sourceLanguage }}</td>
+          <td>{{ translation.targetLanguage }}</td>
+          <td>{{ translation.originalText }}</td>
+          <td>{{ translation.translatedText }}</td>
+          <td>{{ translation.favorite ? 'Sí' : 'No' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
