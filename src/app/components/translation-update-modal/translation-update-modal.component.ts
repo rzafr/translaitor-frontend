@@ -48,4 +48,11 @@ export class TranslationUpdateModalComponent {
     this.activeModal.dismiss('cancel');
   }
 
+  toggleFavorite(event: any) {
+    if (event.target) {
+      const checked = (event.target as HTMLInputElement).checked;
+      this.translation.favorite = checked;
+    }
+  }
+
 }
