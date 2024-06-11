@@ -12,7 +12,7 @@ COPY --from=build-step /usr/local/app/dist/frontend /usr/share/nginx/html
 
 EXPOSE 80
 
-CMD ["ng", "serve", "--host", "0.0.0.0", "--proxy-config", "src/proxy.conf.json"]
+# CMD ["ng", "serve", "--host", "0.0.0.0", "--proxy-config", "src/proxy.conf.json"]
 
 # docker build -t frontend:1.0 .
 # docker image list
