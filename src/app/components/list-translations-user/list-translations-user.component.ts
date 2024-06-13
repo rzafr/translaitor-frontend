@@ -29,10 +29,6 @@ export class ListTranslationsUserComponent implements OnInit {
         this.translations = data;
       },
       error: (error: any) => {
-        console.error('Error fetching translations', error);
-      },
-      complete: () => {
-        console.log('Translation fetching completed');
       }
     });
   }
@@ -47,10 +43,6 @@ export class ListTranslationsUserComponent implements OnInit {
           this.totalPages = data.totalPages;
         },
         error: (error: any) => {
-          console.error('Error fetching translations', error);
-        },
-        complete: () => {
-          console.log('Translation fetching completed');
         }
       });
   }
@@ -73,10 +65,6 @@ export class ListTranslationsUserComponent implements OnInit {
           this.totalPages = data.totalPages;
         },
         error: (error: any) => {
-          console.error('Error fetching translations', error);
-        },
-        complete: () => {
-          console.log('Translation fetching completed');
         }
       });
   }
@@ -105,10 +93,6 @@ export class ListTranslationsUserComponent implements OnInit {
           this.getTranslationsPagedAndSorted();
         },
         error: (error: any) => {
-          console.error('Error deleting translation', error);
-        },
-        complete: () => {
-          console.log('Translation deleting completed');
         }
       });
     }

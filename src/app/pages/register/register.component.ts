@@ -37,19 +37,11 @@ export class RegisterComponent {
                 this.router.navigate(['/translation']);
             },
             error: (error: any) => {
-              console.error('Login error', error);
-            },
-            complete: () => {
-              console.log('Login completed');
             }
           });
         }
       },
       error: (error: any) => {
-        console.error('User register error', error);
-      },
-      complete: () => {
-        console.log('User register completed');
       }
     });
   }

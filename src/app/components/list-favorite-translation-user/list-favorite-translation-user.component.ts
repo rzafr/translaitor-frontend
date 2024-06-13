@@ -23,10 +23,6 @@ export class ListFavoriteTranslationUserComponent implements OnInit {
         this.favoriteTranslations = data;
       },
       error: (error: any) => {
-        console.error('Error fetching translations', error);
-      },
-      complete: () => {
-        console.log('Translation fetching completed');
       }
     });
   }

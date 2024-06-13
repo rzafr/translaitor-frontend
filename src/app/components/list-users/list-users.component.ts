@@ -32,10 +32,6 @@ export class ListUsersComponent implements OnInit {
         this.totalPages = data.totalPages;
       },
       error: (error: any) => {
-        console.error('Error fetching users', error);
-      },
-      complete: () => {
-        console.log('User fetching completed');
       }
     });
   }
@@ -72,10 +68,6 @@ export class ListUsersComponent implements OnInit {
           this.getAllUsers();
         },
         error: (error: any) => {
-          console.error('Error deleting user', error);
-        },
-        complete: () => {
-          console.log('User deleting completed');
         }
       });
     }

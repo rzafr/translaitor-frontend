@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  private authUrl = 'http://backend:8080/api/auth';
+  private authUrl = environment.authUrl;
 
   public isLoggedIn = false;
 
@@ -16,12 +16,12 @@ export class AuthService {
 
   // Persist a new user
   register(user: any): Observable<any> {
-    return this.http.post(`${this.authUrl}/register`, user, { withCredentials: true });
+    return this.http.post(`${this.authUrl}/register`, user);
   }
 
   // Get user and token from backend
   login(user: any): Observable<any> {
-    return this.http.post(`${this.authUrl}/login`, user, { withCredentials: true });
+    return this.http.post(`${this.authUrl}/login`, user);
   }
 
   // Save the token coming from the backend in localstorage

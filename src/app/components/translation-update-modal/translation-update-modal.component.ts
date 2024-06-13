@@ -36,10 +36,6 @@ export class TranslationUpdateModalComponent {
         this.activeModal.close(data); // Returns updated data
       },
       error: (error: any) => {
-        console.error('Translation update error');
-      },
-      complete: () => {
-        console.log('Translation update completed');
       }
     });
   }

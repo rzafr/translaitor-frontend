@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -29,10 +28,6 @@ export class UserUpdateModalComponent {
         this.activeModal.close(data); // Returns updated data
       },
       error: (error: any) => {
-        console.error('User update error');
-      },
-      complete: () => {
-        console.log('User update completed');
       }
     });
   }

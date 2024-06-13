@@ -39,7 +39,6 @@ export class TranslationComponent implements OnInit {
         this.translation.user = data;
       },
       error: (error: any) => {
-        console.error('Error fetching current user:', error);
       }
     });
   }
@@ -72,22 +71,14 @@ export class TranslationComponent implements OnInit {
               this.router.navigate(['/my-translations']);
             },
             error: (error: any) => {
-              console.error('Translation persistence error', error);
-            },
-            complete: () => {
-              console.log('Translation persistence completed');
             }
           });
         },
         error: (error: any) => {
-          console.error('Translation persistence error', error);
-        },
-        complete: () => {
-          console.log('Translation persistence completed');
         }
       });
     } else {
-      console.log("Invalid form");
+      this.router.navigate(['/home']);
     }
   }
 
