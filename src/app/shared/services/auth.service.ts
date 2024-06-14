@@ -1,7 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +20,12 @@ export class AuthService {
 
   // Persist a new user
   register(user: any): Observable<any> {
-    return this.http.post(`${this.authUrl}/register`, user);
+    return this.http.post(`${this.authUrl}/register`, user, httpOptions);
   }
 
   // Get user and token from backend
   login(user: any): Observable<any> {
-    return this.http.post(`${this.authUrl}/login`, user);
+    return this.http.post(`${this.authUrl}/login`, user, httpOptions);
   }
 
   // Save the token coming from the backend in localstorage
@@ -60,7 +64,7 @@ export class AuthService {
 
   // Returns the session user
   getCurrentUser(): Observable<any> {
-    return this.http.get(`${this.authUrl}/user/me`);
+    return this.http.get(`${this.authUrl}/user/me`, httpOptions);
   }
 
   isAdmin() {

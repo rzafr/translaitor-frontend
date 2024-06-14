@@ -21,7 +21,21 @@ export class LoginComponent {
       next: (data: any) => {
         if (data.token) {
           this.authService.loginUser(data.token);
-          this.authService.getCurrentUser().subscribe({
+          this.authService.setUser(data);
+              this.authService.isLoggedIn = true;
+              if (this.authService.getUserRole() == "admin")
+                this.router.navigate(['/admin']);
+              else
+                this.router.navigate(['/user-dashboard']);
+        }
+      },
+      error: (error: any) => {
+      }
+    });
+  }
+}
+/**
+ * this.authService.getCurrentUser().subscribe({
             next: (data: any) => {
               this.authService.setUser(data);
               this.authService.isLoggedIn = true;
@@ -33,10 +47,4 @@ export class LoginComponent {
             error: (error: any) => {
             }
           });
-        }
-      },
-      error: (error: any) => {
-      }
-    });
-  }
-}
+ */
