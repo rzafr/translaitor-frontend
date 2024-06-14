@@ -34,7 +34,7 @@ export class RegisterComponent {
               if (this.authService.getUserRole() == "admin")
                 this.router.navigate(['/admin']);
               else
-                this.router.navigate(['/translation']);
+                this.router.navigate(['/user-dashboard']);
             },
             error: (error: any) => {
             }
